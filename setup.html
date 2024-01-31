@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Setup - FireWallet</title>
-    <link rel="canonical" href="https://firewallet.woodburn.au/setup.html">
-    <meta property="og:url" content="https://firewallet.woodburn.au/setup.html">
-    <meta name="twitter:image" content="https://firewallet.woodburn.au/assets/img/splash.png">
+    <link rel="canonical" href="https://firewallet.au/setup.html">
+    <meta property="og:url" content="https://firewallet.au/setup.html">
+    <meta name="twitter:image" content="https://firewallet.au/assets/img/splash.png">
     <meta property="og:type" content="website">
     <meta property="og:title" content="FireWallet">
     <meta name="twitter:title" content="FireWallet">
@@ -15,7 +15,7 @@
     <meta name="twitter:description" content="The Handshake wallet that is just Fire">
     <meta property="og:description" content="The Handshake wallet that is just Fire">
     <meta name="twitter:card" content="summary">
-    <meta property="og:image" content="https://firewallet.woodburn.au/assets/img/splash.png">
+    <meta property="og:image" content="https://firewallet.au/assets/img/splash.png">
     <script>
         (function() {
 
@@ -58,19 +58,19 @@
 
                 if (!themeSwitchers.length) return;
 
+                document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+                    element.classList.remove('active');
+                    element.setAttribute('aria-pressed', 'false');
+                });
+
                 for (const themeSwitcher of themeSwitchers) {
 
-                    const themeSwitcherText = document.querySelector('#theme-text');
-                    const activeThemeIcon = document.querySelector('.theme-icon-active use');
-                    const btnToActive = document.querySelector('[data-bs-theme-value="' + theme + '"]');
+                    const btnToActivate = themeSwitcher.querySelector('[data-bs-theme-value="' + theme + '"]');
 
-                    document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
-                        element.classList.remove('active');
-                        element.setAttribute('aria-pressed', 'false');
-                    });
-
-                    btnToActive.classList.add('active');
-                    btnToActive.setAttribute('aria-pressed', 'true');
+                    if (btnToActivate) {
+                        btnToActivate.classList.add('active');
+                        btnToActivate.setAttribute('aria-pressed', 'true');
+                    }
                 }
             }
 
@@ -86,7 +86,8 @@
 
                 document.querySelectorAll('[data-bs-theme-value]')
                     .forEach(toggle => {
-                        toggle.addEventListener('click', () => {
+                        toggle.addEventListener('click', (e) => {
+                            e.preventDefault();
                             const theme = toggle.getAttribute('data-bs-theme-value');
                             setStoredTheme(theme);
                             setTheme(theme);
@@ -106,9 +107,9 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-dark navbar-expand-md sticky-top py-3" id="mainNav">
+    <nav class="navbar navbar-expand-md sticky-top py-3 navbar-dark" id="mainNav">
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><span class="bs-icon-md bs-icon-rounded shadow d-flex justify-content-center align-items-center me-2 bs-icon"><img src="assets/img/FW.png" width="100%"></span><span>FireWallet</span></a>
-            <nav class="navbar navbar-light navbar-expand-md">
+            <nav class="navbar navbar-expand-md navbar-light">
                 <div class="container-fluid"><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="navbar-nav">
@@ -195,12 +196,12 @@
         <div class="container py-4 py-lg-5">
             <hr>
             <div class="text-muted d-flex justify-content-between align-items-center pt-3">
-                <p class="mb-0">Copyright © 2023 FireWallet</p>
+                <p class="mb-0">Copyright © 2024 FireWallet</p>
             </div>
         </div>
     </footer>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/script.min.js"></script>
+    <script src="assets/js/bold-and-dark.js"></script>
 </body>
 
 </html>
